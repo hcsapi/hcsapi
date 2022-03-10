@@ -16,7 +16,7 @@ setup(
 
     description='코로나 자가진단 자동화 라이브러리 (Automation tool for https://hcs.eduro.go.kr/)',
     license='GPL-V3',
-    author='scottjsh & executetype',
+    author='scottjsh & excutetype',
 
     
     url='https://github.com/hcs-api/hcs-api',
