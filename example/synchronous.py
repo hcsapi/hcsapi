@@ -1,4 +1,4 @@
-from hcskr.hcskr import selfcheck, QuickTestResult
+from hsc-api import selfcheck, QuickTestResult
 
 name = input("이름을 입력하세요: ")
 birth = input("생년월일을 입력하세요: ")
