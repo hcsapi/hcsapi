@@ -1,7 +1,7 @@
-## 패키지의 동기 진행 방식과 동일합니다.
+## 패키지의 동기 진행 방식과 동일
 
 import asyncio
-from hcskr import asyncSelfCheck, QuickTestResult
+from hcs-api import asyncSelfCheck, QuickTestResult
 
 name = input("이름을 입력하세요: ")
 birth = input("생년월일을 입력하세요: ")
