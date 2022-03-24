@@ -14,3 +14,7 @@ selfcheck = input("신속항원검사 사용 여부를 입력하세요(Yes=1 , N
 async def check():
     data = await hcsapi.asyncSelfCheck(name, birth,region,school,level,password,selfcheck)
     print(data)
+
+loop = asyncio.get_event_loop()
+loop.run_until_complete(check())
+loop.close()
