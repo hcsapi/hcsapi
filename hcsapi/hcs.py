@@ -18,12 +18,12 @@ def selfcheck(
     schoolname: str,
     level: str,
     password: str,
-    selfcheck: str = "0",
+    docheck: str = "0",
     customloginname: str = None,
     loop=asyncio.get_event_loop(),
 ):
     return loop.run_until_complete(
-        asyncSelfCheck(name, birth, area, schoolname, level, password, selfcheck, customloginname)
+        asyncSelfCheck(name, birth, area, schoolname, level, password, docheck, customloginname)
     )
 
 
@@ -83,7 +83,7 @@ async def asyncSelfCheck(
     schoolname: str,
     level: str,
     password: str,
-    selfcheck: str = "0",
+    docheck: str = "0",
     customloginname: str = None,
 ):
     async with aiohttp.ClientSession() as session:
@@ -138,7 +138,7 @@ async def asyncSelfCheck(
             }
 
         try:
-            if selfcheck == "0": # 진단키드 사용여부 X
+            if docheck == "0": # 진단키드 사용여부 X
                 res = await send_hcsreq(
                     headers={
                         "Content-Type": "application/json",
@@ -147,7 +147,7 @@ async def asyncSelfCheck(
                     endpoint="/registerServey",
                     school=login_result["info"]["schoolurl"],
                     json={
-                        "clientVersion": UIVersion,
+                        "clientVersion": UIVersion(),
                         "rspns00": "Y",
                         "rspns01": "1",
                         "rspns02": "1",
@@ -157,7 +157,7 @@ async def asyncSelfCheck(
                     },
                     session=session,
                 )
-            elif selfcheck == "1": # 진단키드 사용여부 O
+            elif docheck == "1": # 진단키드 사용여부 O
                 res = await send_hcsreq(
                     headers={
                         "Content-Type": "application/json",
@@ -166,7 +166,7 @@ async def asyncSelfCheck(
                     endpoint="/registerServey",
                     school=login_result["info"]["schoolurl"],
                     json={
-                        "clientVersion": UIVersion,
+                        "clientVersion": UIVersion(),
                         "rspns00": "Y",
                         "rspns01": "1",
                         "rspns02": "1",
@@ -176,15 +176,15 @@ async def asyncSelfCheck(
                     },
                     session=session,
                 )
-
             return {
                 "error": False,
                 "code": "SUCCESS",
                 "message": "성공적으로 자가진단을 수행하였습니다.",
                 "regtime": res["registerDtm"],
+                "docheck": docheck,
             }
 
-        except Exception:
+        except Exception as e:
             return {"error": True, "code": "UNKNOWN", "message": "알 수 없는 에러 발생."}
 
 
