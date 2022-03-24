@@ -6,6 +6,11 @@ git을 통해 리포지토리 코드를 설치하실 수 있습니다.
 > 윈도우나 리눅스의 터미널에서 다음과 같이 입력합니다.
 > ```shell
 > python -m pip install -U pip
+> pip install hcs-api
+> ```
+> 
+> ```shell
+> python -m pip install -U pip
 > pip install git+https://github.com/hcs-api/hcs-api.git@main
 > ```
 
@@ -65,8 +70,8 @@ git을 통해 리포지토리 코드를 설치하실 수 있습니다.
 </details>
 
 ## 💡 TIP
-리턴값의 `'code'` 를 이용하시면 성공, 실패여부, 실패이유를 모두 알 수 있어요!</br>
-또한 `'message'`로 이용자에게 바로 실패이유를 알릴수도 있어요!
+리턴값의 `'code'` 를 이용하시면 성공, 실패 여부, 실패 이유를 모두 알 수 있습니다.</br>
+또한 `'message'`로 이용자에게 바로 실패 이유를 알릴 수 있습니다.
 
 
 **원본 소스의 저작권은 331leo님에게 있습니다.**
