@@ -5,6 +5,9 @@ from aiohttp.client_exceptions import ServerDisconnectedError
 
 UIVersion: str = None
 
+def UIVersion():
+    return UIVersion
+
 async def send_hcsreq(
     headers: Dict,
     endpoint: str,
