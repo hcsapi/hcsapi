@@ -1,4 +1,4 @@
-# hcs-api
+# hcsapi
 
 ## 📥다운로드
 git을 통해 리포지토리 코드를 설치하실 수 있습니다.
@@ -6,12 +6,12 @@ git을 통해 리포지토리 코드를 설치하실 수 있습니다.
 > 윈도우나 리눅스의 터미널에서 다음과 같이 입력합니다.
 > ```shell
 > python -m pip install -U pip
-> pip install hcs-api
+> pip install hcsapi
 > ```
 > 
 > ```shell
 > python -m pip install -U pip
-> pip install git+https://github.com/hcs-api/hcs-api.git@main
+> pip install git+https://github.com/hcsapi/hcsapi.git@main
 > ```
 
 ## 🤖사용 방법
