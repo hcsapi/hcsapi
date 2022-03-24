@@ -18,11 +18,12 @@ def selfcheck(
     schoolname: str,
     level: str,
     password: str,
+    selfcheck: str = "0",
     customloginname: str = None,
     loop=asyncio.get_event_loop(),
 ):
     return loop.run_until_complete(
-        asyncSelfCheck(name, birth, area, schoolname, level, password, customloginname)
+        asyncSelfCheck(name, birth, area, schoolname, level, password, selfcheck, customloginname)
     )
 
 
@@ -82,7 +83,7 @@ async def asyncSelfCheck(
     schoolname: str,
     level: str,
     password: str,
-    selfcheck: str,
+    selfcheck: str = "0",
     customloginname: str = None,
 ):
     async with aiohttp.ClientSession() as session:
