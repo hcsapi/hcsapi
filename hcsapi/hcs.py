@@ -18,7 +18,7 @@ def selfcheck(
     schoolname: str,
     level: str,
     password: str,
-    docheck: str = "0",
+    docheck: str = "0", # 진단키드 사용여부
     customloginname: str = None,
     loop=asyncio.get_event_loop(),
 ):
@@ -83,7 +83,7 @@ async def asyncSelfCheck(
     schoolname: str,
     level: str,
     password: str,
-    docheck: str = "0",
+    docheck: str = "0", # 진단키드 사용여부
     customloginname: str = None,
 ):
     async with aiohttp.ClientSession() as session:
