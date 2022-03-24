@@ -12,5 +12,5 @@ password = input("비밀번호를 입력하세요: ")
 selfcheck = input("신속항원검사 사용 여부를 입력하세요(Yes=1 , No=0): ")
 
 async def check():
-    data = await hcsapi.asyncSelfCheck(name, birth,region,school,level,password,int(selfcheck))
+    data = await hcsapi.asyncSelfCheck(name, birth,region,school,level,password,selfcheck)
     print(data)
