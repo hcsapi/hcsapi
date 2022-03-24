@@ -10,18 +10,18 @@ with open(path.join(this_directory, "requirements.txt")) as f:
     requirements = f.readlines()
 
 setup(
-    name='hcs-api',
+    name='hcsapi',
 
-    version='1.15.1',
+    version='1.15.2',
 
     description='자가진단 자동화 비공식 Api (Automation tool for https://hcs.eduro.go.kr/)',
     license='GPL-V3',
     author='scottjsh & excutetype',
 
     
-    url='https://github.com/hcs-api/hcs-api',
+    url='https://github.com/hcsapi/hcsapi',
 
-    download_url='https://github.com/hcs-api/hcs-api',
+    download_url='https://github.com/hcsapi/hcsapi',
 
     long_description=long_description,
     long_description_content_type='text/markdown',
