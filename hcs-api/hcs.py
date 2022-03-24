@@ -7,7 +7,7 @@ import aiohttp
 import jwt
 
 from .mapping import encrypt, pubkey, schoolinfo
-from .request import search_school, send_hcsreq
+from .request import search_school, send_hcsreq, UIVersion
 from .transkey import mTransKey
 
 
@@ -137,9 +137,7 @@ async def asyncSelfCheck(
             }
 
         try:
-            f = open("./version.txt","r",encoding="utf-8")
-            version = f.readline()
-            if selfcheck == "0":
+            if selfcheck == "0": # 진단키드 사용여부 X
                 res = await send_hcsreq(
                     headers={
                         "Content-Type": "application/json",
@@ -148,7 +146,7 @@ async def asyncSelfCheck(
                     endpoint="/registerServey",
                     school=login_result["info"]["schoolurl"],
                     json={
-                        "clientVersion": version,
+                        "clientVersion": UIVersion,
                         "rspns00": "Y",
                         "rspns01": "1",
                         "rspns02": "1",
@@ -158,25 +156,25 @@ async def asyncSelfCheck(
                     },
                     session=session,
                 )
-            elif selfcheck == "1":
+            elif selfcheck == "1": # 진단키드 사용여부 O
                 res = await send_hcsreq(
-                headers={
-                    "Content-Type": "application/json",
-                    "Authorization": token,
-                },
-                endpoint="/registerServey",
-                school=login_result["info"]["schoolurl"],
-                json={
-                    "clientVersion": version,
-                    "rspns00": "Y",
-                    "rspns01": "1",
-                    "rspns02": "1",
-                    "rspns07": "0",
-                    "upperToken": token,
-                    "upperUserNameEncpt": customloginname,
-                },
-                session=session,
-            )
+                    headers={
+                        "Content-Type": "application/json",
+                        "Authorization": token,
+                    },
+                    endpoint="/registerServey",
+                    school=login_result["info"]["schoolurl"],
+                    json={
+                        "clientVersion": UIVersion,
+                        "rspns00": "Y",
+                        "rspns01": "1",
+                        "rspns02": "1",
+                        "rspns07": "0",
+                        "upperToken": token,
+                        "upperUserNameEncpt": customloginname,
+                    },
+                    session=session,
+                )
 
             return {
                 "error": False,
