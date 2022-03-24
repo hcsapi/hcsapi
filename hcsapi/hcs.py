@@ -82,7 +82,7 @@ async def asyncSelfCheck(
     schoolname: str,
     level: str,
     password: str,
-    selfcheck: str = "0",
+    selfcheck: str,
     customloginname: str = None,
 ):
     async with aiohttp.ClientSession() as session:
