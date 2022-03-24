@@ -8,11 +8,13 @@ git을 통해 리포지토리 코드를 설치하실 수 있습니다.
 > python -m pip install -U pip
 > pip install hcsapi
 > ```
-> 
+> 또는
 > ```shell
 > python -m pip install -U pip
 > pip install git+https://github.com/hcsapi/hcsapi.git@main
 > ```
+> **업데이트**
+> pip install hcsapi --upgrade
 
 ## 🤖사용 방법
 [이곳의 예제](./example)를 참고하세요.
