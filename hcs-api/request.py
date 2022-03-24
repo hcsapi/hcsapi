@@ -3,6 +3,7 @@ from typing import Dict
 import aiohttp
 from aiohttp.client_exceptions import ServerDisconnectedError
 
+UIVersion: str = None
 
 async def send_hcsreq(
     headers: Dict,
@@ -11,6 +12,7 @@ async def send_hcsreq(
     json: Dict,
     session: aiohttp.ClientSession,
 ):
+    global UIVersion
     for attempt in range(5):
         try:
             async with session.post(
@@ -18,6 +20,7 @@ async def send_hcsreq(
                 url=f"https://{school}hcs.eduro.go.kr{endpoint}",
                 json=json,
             ) as resp:
+                UIVersion = resp.headers["X-Client-Version"]
                 return await resp.json()
         except ServerDisconnectedError as e:
             if attempt >= 4:
