@@ -1,7 +1,7 @@
 ## 패키지의 동기 진행 방식과 동일
 
 import asyncio
-from hcsapi import asyncSelfCheck, QuickTestResult
+import hcsapi
 
 name = input("이름을 입력하세요: ")
 birth = input("생년월일을 입력하세요: ")
@@ -12,9 +12,5 @@ password = input("비밀번호를 입력하세요: ")
 selfcheck = input("신속항원검사 사용 여부를 입력하세요(Yes=1 , No=0): ")
 
 async def check():
-    data = await asyncSelfCheck(name, birth,region,school,level,password,selfcheck)
+    data = await hcsapi.asyncSelfCheck(name, birth,region,school,level,password,int(selfcheck))
     print(data)
-
-loop = asyncio.get_event_loop()
-loop.run_until_complete(check())
-loop.close()
