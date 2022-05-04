@@ -279,7 +279,7 @@ async def asyncUserLogin(
     try:
         res = await send_hcsreq(
             headers={"Content-Type": "application/json"},
-            endpoint="/v2/findUser",
+            endpoint="/v3/findUser",
             school=info["schoolurl"],
             json={
                 "orgCode": schoolcode,
@@ -288,6 +288,7 @@ async def asyncUserLogin(
                 "loginType": "school",
                 "searchKey": token,
                 "stdntPNo": None,
+                "orgName": schoolname,
             },
             session=session,
         )
