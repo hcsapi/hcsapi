@@ -277,6 +277,12 @@ async def asyncUserLogin(
         }
 
     try:
+        mtk = mTransKey("https://hcs.eduro.go.kr/transkeyServlet")
+        pw_pad = await mtk.new_keypad("number", "password", "password", "password")
+        encrypted = pw_pad.encrypt_password(password)
+        hm = mtk.hmac_digest(encrypted.encode())
+        
+        
         res = await send_hcsreq(
             headers={"Content-Type": "application/json"},
             endpoint="/v3/findUser",
@@ -290,6 +296,25 @@ async def asyncUserLogin(
                 "stdntPNo": None,
                 "orgName": schoolname,
                 "lctnScCode": info["schoolcode"],
+                "password": json.dumps(
+                    {
+                        "raon": [
+                            {
+                                "id": "password",
+                                "enc": encrypted,
+                                "hmac": hm,
+                                "keyboardType": "number",
+                                "keyIndex": mtk.keyIndex,
+                                "fieldType": "password",
+                                "seedKey": mtk.crypto.get_encrypted_key(),
+                                "initTime": mtk.initTime,
+                                "ExE2E": "false",
+                            }
+                        ]
+                    }
+                ),
+                "deviceUuid": "",
+                "makeSession": True,
             },
             session=session,
         )
