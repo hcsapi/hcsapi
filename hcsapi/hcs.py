@@ -289,6 +289,7 @@ async def asyncUserLogin(
                 "searchKey": token,
                 "stdntPNo": None,
                 "orgName": schoolname,
+                "lctnScCode": info["schoolcode"],
             },
             session=session,
         )
