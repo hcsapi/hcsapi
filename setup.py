@@ -12,7 +12,7 @@ with open(path.join(this_directory, "requirements.txt")) as f:
 setup(
     name='hcsapi',
 
-    version='1.15.5',
+    version='1.16.0',
 
     description='자가진단 자동화 비공식 Api (Automation tool for https://hcs.eduro.go.kr/)',
     license='GPL-V3',
