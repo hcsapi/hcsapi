@@ -1,6 +1,6 @@
 from .hcs import *
 
-__version__ = "1.15.5"
+__version__ = "1.16.0"
 
 __all__ = [
     "asyncSelfCehck",
