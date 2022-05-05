@@ -5,16 +5,14 @@ git을 통해 리포지토리 코드를 설치하실 수 있습니다.
 
 > 윈도우나 리눅스의 터미널에서 다음과 같이 입력합니다.
 > ```shell
-> python -m pip install -U pip
-> pip install hcsapi
+> python3 -m pip install -U pip
+> pip install --upgrade hcsapi
 > ```
 > 또는
 > ```shell
-> python -m pip install -U pip
-> pip install git+https://github.com/hcsapi/hcsapi.git@main
+> python3 -m pip install -U pip
+> pip install --upgrade git+https://github.com/hcsapi/hcsapi.git@main
 > ```
-> **업데이트**
-> pip install hcsapi --upgrade
 
 ## 🤖사용 방법
 [이곳의 예제](./example)를 참고하세요.
